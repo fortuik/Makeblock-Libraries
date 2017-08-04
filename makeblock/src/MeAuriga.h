@@ -79,11 +79,28 @@
 // struct defined in MeAuriga.h
  MePort_Sig mePort[17] =
  {
-   { NC, NC }, {   5,   4 }, {   3,   2 }, {   7,   6 }, {   9,   8 }, 
+   //{ NC, NC }, {   5,   4 }, {   3,   2 }, {   7,   6 }, {   9,   8 }, // these are high voltage ports, ignore for now
+   //emulate MCore ports and keep Auriga
+   // MCore  <-> Auriga 
+   // PORT_1 == ?? for SHOW FACE
+   // Port_2 == PORT_9  for LineFollower
+   // Port_3 == Port_10 for Ultrasonic
+   //
+   // MCore info:
+   // PORT_6 Maps to the onboard Light sensor (LDR). Use with the MeLightSensor class. 
+   // PORT_7 Maps to the two onboard RGB LEDs. Use with the MeRGBLed class.
+   // PORT_8 Is mapped to the Buzzer, but isn't used in any example. Instead you should just use pin 8 to access the buzzer (as in the default Arduino examples)
+   // PORT_9 Is the same as motor 1. This will work with most sketches since it maps to M1. Use with MeDCMotor.
+   // PORT_10 Is the same as motor 2. This will work with most sketches since it maps to M2. Use with MeDCMotor.
+   //
+   // M1&M2 are set to PORT_9 & PORT_10 - this can screw the sensors, FIX in MePort.h to PORT_15,16
+   //
+   { NC, NC }, { NC, NC }, { A7, A12 }, { A6,A11 }, { NC, NC }, // emulate MCore ports, basicly repeat of PORTS 7-10
    { 16, 17 }, { A10, A15 }, {  A9, A14 }, {  A8, A13 }, {  A7, A12 }, 
    //             LIGHT2        LIGHT1        TEMP          SOUND
    { A6,A11 }, {  NC,  A2 }, {  NC,  A3 }, {  NC,  A0 }, {  NC,  A1 },
-   { NC, NC }, { NC, NC },
+   //{ NC, NC }, { NC, NC }, - these are now M1, M2
+   { 5, 4 }, { 3, 2 },
  };
  
 Encoder_port_type encoder_Port[6] =

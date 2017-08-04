@@ -87,8 +87,6 @@ extern MePort_Sig mePort[17];  // mePort[0] is nonsense
 #define PORT_8  (0x08)
 #define PORT_9  (0x09)
 #define PORT_10 (0x0a)
-#define M1      (0x09)
-#define M2      (0x0a)
 #define PORT_11 (0x0b)
 #define PORT_12 (0x0c)
 #define PORT_13 (0x0d)
@@ -96,10 +94,18 @@ extern MePort_Sig mePort[17];  // mePort[0] is nonsense
 #define PORT_15 (0x0f)
 #define PORT_16 (0x10)
 
-#ifdef MeMbot_H
-#define PORT_RGB           (0x05)
-#define PORT_LightSensor   (0x06)
+//re-define M1 M2 to PORT_15 PORT_16!!!
+#if defined(__AVR_ATmega2560__)
+#define M1      (0x0f)
+#define M2      (0x10)
+#define PORT_LightSensor   (0x0c)
+#define PORT_RGB           (0x06)
 #endif
+
+//#ifdef MeMbot_H
+//#define PORT_RGB           (0x05)
+//#define PORT_LightSensor   (0x06)
+//#endif
 
 #define SLOT1       (1)
 #define SLOT2       (2)

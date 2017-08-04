@@ -1,3 +1,5 @@
+# Very dirty workaround that fakes the Ranger to work as mBot with the mBot Android App
+
 # Makeblock Library v3.24
 
 Arduino Library for Makeblock Electronic Modules
